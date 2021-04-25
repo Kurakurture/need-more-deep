@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Level_Generator : MonoBehaviour
 {
@@ -26,5 +27,13 @@ public class Level_Generator : MonoBehaviour
 
         lastSpawnTrigger = Instantiate(spawnTrigger, new Vector3(0, currentHeight, 0), Quaternion.identity);
         currentHeight -= levelHeight;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey("r"))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }

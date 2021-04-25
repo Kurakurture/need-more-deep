@@ -39,9 +39,19 @@ public class jumpScript : MonoBehaviour
 
         if (Input.GetKeyDown("w") && !inAir)
         {
-            rb.AddRelativeForce( Vector3.up * jumpStrenght +rb.velocity);
+            rb.AddRelativeForce(Vector3.up * jumpStrenght);
             animator.SetTrigger("jump");
         }
+
+        // if (Input.GetKey("a") && inAir)
+        // {
+        //     rb.AddRelativeForce(Vector3.left * jumpStrenght);
+        // }
+
+        // if (Input.GetKey("d") && inAir)
+        // {
+        //     rb.AddRelativeForce(Vector3.right * jumpStrenght);
+        // }
 
         // if (rb.velocity.y < 0)
         // {

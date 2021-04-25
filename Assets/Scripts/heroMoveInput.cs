@@ -9,6 +9,7 @@ public class heroMoveInput : MonoBehaviour
     public UnityEvent MoveToLefttStart;
     public UnityEvent DeepColision;
     public UnityEvent Dead;
+    public UnityEvent EndGame;
 
     public float movingSpeed = 2;
     public UnityEvent Idle;
@@ -62,6 +63,12 @@ public class heroMoveInput : MonoBehaviour
             longFlight = true;
             Dead.Invoke();
             animator.SetBool("dead", longFlight);
+        }
+
+        if (other.tag == "EndGame")
+        {
+            Debug.Log("donut");
+            EndGame.Invoke();
         }
     }
 
