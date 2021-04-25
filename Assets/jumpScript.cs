@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class jumpScript : MonoBehaviour
 {
@@ -8,6 +7,10 @@ public class jumpScript : MonoBehaviour
     public float fallMultipier = 2f;
 
     public float jumpStrenght = 10;
+    public float timeOfFlight;
+    public float timeOfFlightToDead;
+
+    public UnityEvent FlightWasLong;
 
     public bool inAir;
 
@@ -18,8 +21,18 @@ public class jumpScript : MonoBehaviour
         if (rb.velocity.y > 0.3 || rb.velocity.y < -0.1)
         {
             inAir = true;
+            timeOfFlight += Time.deltaTime;
         }
-        else { inAir = false; }
+        else
+        {
+            inAir = false;
+            timeOfFlight = 0;
+        }
+
+        if (timeOfFlight >= timeOfFlightToDead)
+        {
+            FlightWasLong.Invoke();
+        }
 
         if (Input.GetKeyDown("w") && rb.velocity.y < jumpStrenght && !inAir)
         {
