@@ -7,6 +7,7 @@ public class heroMoveInput : MonoBehaviour
 
     public UnityEvent MoveToRightStart;
     public UnityEvent MoveToLefttStart;
+    public UnityEvent DeepColision;
 
     void FixedUpdate()
     {
@@ -18,6 +19,14 @@ public class heroMoveInput : MonoBehaviour
         if (Input.GetKey("d"))
         {
             MoveToRightStart.Invoke();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Finish")
+        {
+            DeepColision.Invoke();
         }
     }
 }
