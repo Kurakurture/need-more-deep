@@ -8,7 +8,6 @@ public class cameraRotateToObject : MonoBehaviour
     
     void Update()
     {
-
         Vector3 vec = new Vector3(0,observeObject.transform.position.y + offset.y,0);
 
         this.transform.position = Vector3.Lerp(this.transform.position, vec, speed);
